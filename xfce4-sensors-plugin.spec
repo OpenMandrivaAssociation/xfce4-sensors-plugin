@@ -1,27 +1,26 @@
-%define oname xfce4-sensors-plugin
-
 Summary:	Sensor plugin for the Xfce panel
-Name:		xfce-sensors-plugin
+Name:		xfce4-sensors-plugin
 Version:	0.10.99.2
-Release:	%mkrel 2
-License:	BSD
+Release:	%mkrel 3
+License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
-Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{oname}-%{version}.tar.bz2
+Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
 Requires:	xfce-panel >= 4.3.0
 Requires:	lm_sensors
 BuildRequires:	xfce-panel-devel >= 4.3.0
 BuildRequires:	libxfcegui4-devel >= 4.3.0 
 BuildRequires:	lm_sensors-devel
 BuildRequires:	perl(XML::Parser)
+Obsoletes:	xfce-sensors-plugin
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-A panel plugin for the Xfce panel.
-It reads your hardware sensor values and displays them in your panel.
+A Xfce panel plugin which reads your hardware sensor 
+values and displays them in your panel.
 
 %prep
-%setup -qn %{oname}-%{version}
+%setup -q
 
 %build 
 %configure2_5x \
@@ -33,7 +32,7 @@ It reads your hardware sensor values and displays them in your panel.
 rm -rf %{buildroot}
 %makeinstall_std 
 
-%find_lang %{oname}
+%find_lang %{name}
 
 %post
 %update_icon_cache hicolor
@@ -44,9 +43,9 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
-%files -f %{oname}.lang
+%files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog INSTALL README TODO
+%doc AUTHORS ChangeLog README TODO
 %{_libdir}/xfce4/panel-plugins/*
 %{_datadir}/xfce4/panel-plugins/*
 %{_iconsdir}/hicolor/*/apps/*.png
