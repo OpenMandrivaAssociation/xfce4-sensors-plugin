@@ -1,7 +1,7 @@
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	0.10.99.2
-Release:	%mkrel 3
+Version:	0.10.99.3
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
@@ -25,7 +25,7 @@ values and displays them in your panel.
 %build 
 %configure2_5x \
 	--disable-static
-	
+
 %make
 
 %install
