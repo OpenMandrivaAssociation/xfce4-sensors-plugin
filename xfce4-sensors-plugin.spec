@@ -13,7 +13,6 @@ BuildRequires:	libxfcegui4-devel >= 4.4.2
 BuildRequires:	lm_sensors-devel
 BuildRequires:	perl(XML::Parser)
 Obsoletes:	xfce-sensors-plugin
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 A Xfce panel plugin which reads your hardware sensor 
