@@ -1,7 +1,7 @@
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	0.10.99.3
-Release:	%mkrel 5
+Version:	0.10.99.6
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
@@ -12,6 +12,7 @@ BuildRequires:	xfce4-panel-devel >= 4.4.2
 BuildRequires:	libxfcegui4-devel >= 4.4.2
 BuildRequires:	lm_sensors-devel
 BuildRequires:	perl(XML::Parser)
+BuildRequires:	libnotify-devel
 Obsoletes:	xfce-sensors-plugin
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -22,9 +23,14 @@ values and displays them in your panel.
 %prep
 %setup -q
 
-%build 
+%build
+%define _disable_ld_no_undefined 1
 %configure2_5x \
-	--disable-static
+	--disable-static \
+	--enable-hddtemp=yes \
+	--enable-libsensors=yes \
+	--enable-procacpi \
+	--enable-sysfsacpi
 
 %make
 
