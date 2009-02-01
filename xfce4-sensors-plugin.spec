@@ -6,13 +6,14 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
-Requires:	xfce4-panel >= 4.4.2
-Requires:	lm_sensors
+Patch0:		xfce4-sensors-plugin-0.10.99.6-fix-underlinking.patch
 BuildRequires:	xfce4-panel-devel >= 4.4.2
 BuildRequires:	libxfcegui4-devel >= 4.4.2
 BuildRequires:	lm_sensors-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libnotify-devel
+Requires:	xfce4-panel >= 4.4.2
+Requires:	lm_sensors > 3
 Obsoletes:	xfce-sensors-plugin
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -22,9 +23,13 @@ values and displays them in your panel.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %define _disable_ld_no_undefined 1
+# (tpg) for patch0
+NOCONFIGURE=1 xdt-autogen
+
 %configure2_5x \
 	--disable-static \
 	--enable-hddtemp=yes \
@@ -37,6 +42,8 @@ values and displays them in your panel.
 %install
 rm -rf %{buildroot}
 %makeinstall_std 
+
+rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 
 %find_lang %{name}
 
@@ -52,6 +59,9 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README TODO
-%{_libdir}/xfce4/panel-plugins/*
+%{_bindir}/xfce4-sensors
+%{_libdir}/xfce4/modules/*
+%{_libdir}/xfce4/panel-plugins/xfce4-sensors-plugin
 %{_datadir}/xfce4/panel-plugins/*
-%{_iconsdir}/hicolor/*/apps/*.png
+%{_iconsdir}/hicolor/*/apps/*.*g
+%{_datadir}/applications/xfce4-sensors.desktop
