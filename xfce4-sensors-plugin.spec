@@ -1,7 +1,7 @@
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
 Version:	0.10.99.6
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
@@ -9,11 +9,15 @@ Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version
 Patch0:		xfce4-sensors-plugin-0.10.99.6-fix-underlinking.patch
 BuildRequires:	xfce4-panel-devel >= 4.4.2
 BuildRequires:	libxfcegui4-devel >= 4.4.2
-BuildRequires:	lm_sensors-devel
+BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libnotify-devel
+BuildRequires:	netcat-traditional
+BuildRequires:	hddtemp
 Requires:	xfce4-panel >= 4.4.2
 Requires:	lm_sensors > 3
+Requires:	netcat-traditional
+Requires:	hddtemp
 Obsoletes:	xfce-sensors-plugin
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -35,13 +39,14 @@ NOCONFIGURE=1 xdt-autogen
 	--enable-hddtemp=yes \
 	--enable-libsensors=yes \
 	--enable-procacpi \
-	--enable-sysfsacpi
+	--enable-sysfsacpi \
+	--enable-netcat=yes
 
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std 
+%makeinstall_std
 
 rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 
