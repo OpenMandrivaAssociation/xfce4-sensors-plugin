@@ -7,6 +7,10 @@ Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
 Patch0:		xfce4-sensors-plugin-0.10.99.6-fix-underlinking.patch
+Patch1:		xfce4-sensors-plugin-1.0.0-libnotify-0.7.patch
+Patch2:		xfce4-sensors-plugin-1.0.0-missing_includedir.patch
+Patch3:		xfce4-sensors-plugin-1.0.0-segfault_workaround.patch
+Patch4:		xfce4-sensors-plugin-1.0.0-gcc46.patch
 BuildRequires:	xfce4-panel-devel >= 4.4.2
 BuildRequires:	libxfcegui4-devel >= 4.4.2
 BuildRequires:	lm_sensors-devel > 3
@@ -28,12 +32,17 @@ values and displays them in your panel.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p0
+%patch2 -p0
+%patch3 -p0
+%patch4 -p0
 
 %build
 %define _disable_ld_no_undefined 1
 # (tpg) for patch0
 NOCONFIGURE=1 xdt-autogen
 
+export CFLAGS="%optflags -DHAVE_LIBNOTIFY_07"
 %configure2_5x \
 	--disable-static \
 	--enable-hddtemp=yes \
