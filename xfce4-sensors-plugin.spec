@@ -7,7 +7,7 @@ Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
 BuildRequires:	xfce4-panel-devel >= 4.8.0
-BuildRequires:	libxfcegui4-devel >= 4.4.2
+BuildRequires:	libxfce4ui-devel >= 4.6.0
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libnotify-devel
