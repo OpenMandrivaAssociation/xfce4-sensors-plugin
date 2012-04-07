@@ -1,24 +1,23 @@
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
 Version:	1.2.3
-Release:	%mkrel 1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
-BuildRequires:	xfce4-panel-devel >= 4.8.0
-BuildRequires:	libxfce4ui-devel >= 4.6.0
+BuildRequires:	xfce4-panel-devel >= 4.9.0
+BuildRequires:	libxfce4ui-devel >= 4.9.1
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libnotify-devel
 BuildRequires:	netcat-traditional
 BuildRequires:	hddtemp
-Requires:	xfce4-panel >= 4.8.0
+Requires:	xfce4-panel >= 4.9.0
 Requires:	lm_sensors > 3
 Requires:	netcat-traditional
 Requires:	hddtemp
 Obsoletes:	xfce-sensors-plugin
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 A Xfce panel plugin which reads your hardware sensor 
@@ -42,24 +41,13 @@ values and displays them in your panel.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 
-%find_lang %{name}
-
-%post
-%update_icon_cache hicolor
-
-%postun
-%clean_icon_cache hicolor
-
-%clean
-rm -rf %{buildroot}
+%find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README TODO
 %{_bindir}/xfce4-sensors
 %{_libdir}/xfce4/modules/*
