@@ -7,7 +7,7 @@ Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(libxfce4panel-1.0)
-BuildRequires:	pkgconfig(libxfce4ui-1.0)
+BuildRequires:	pkgconfig(libxfce4ui-1)
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(libnotify)
@@ -29,7 +29,7 @@ values and displays them in your panel.
 %build
 %define _disable_ld_no_undefined 1
 
-%configure2_5x \
+%configure \
 	--disable-static \
 	--enable-hddtemp=yes \
 	--enable-libsensors=yes \
