@@ -1,13 +1,14 @@
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	1.2.5
-Release:	4
+Version:	1.2.6
+Release:	0.1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://goodies.xfce.org/releases/xfce4-sensors-plugin/%{name}-%{version}.tar.bz2
+Source1:	%{name}.rpmlintrc
 BuildRequires:	pkgconfig(libxfce4panel-1.0)
-BuildRequires:	pkgconfig(libxfce4ui-1.0)
+BuildRequires:	pkgconfig(libxfce4ui-1)
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(libnotify)
@@ -51,7 +52,7 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 %doc AUTHORS ChangeLog README TODO
 %{_bindir}/xfce4-sensors
 %{_libdir}/xfce4/modules/*
-%{_libdir}/xfce4/panel-plugins/xfce4-sensors-plugin
+%{_libexecdir}/xfce4/panel-plugins/xfce4-sensors-plugin
 %{_datadir}/xfce4/panel-plugins/*
 %{_iconsdir}/hicolor/*/apps/*.*g
 %{_datadir}/applications/xfce4-sensors.desktop
