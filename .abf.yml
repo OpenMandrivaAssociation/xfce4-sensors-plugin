@@ -1,2 +1,4 @@
+removed_sources:
+  xfce4-sensors-plugin-1.2.6.tar.bz2: 5bf26deacc942f1c5c596517432a8eb055b825f8
 sources:
-  "xfce4-sensors-plugin-1.2.6.tar.bz2": 5bf26deacc942f1c5c596517432a8eb055b825f8
+  xfce4-sensors-plugin-1.2.98.tar.bz2: 39a0378c4993a278473b0d94880384210c74df33
