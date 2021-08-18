@@ -40,6 +40,7 @@ values and displays them in your panel.
 	--enable-procacpi \
 	--enable-sysfsacpi \
 	--enable-netcat=yes \
+	--disable-pathchecks \
 	--enable-notification
 
 %make_build
