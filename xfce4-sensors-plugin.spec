@@ -12,6 +12,7 @@ Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ve
 Source1:	%{name}.rpmlintrc
 BuildRequires:	pkgconfig(libxfce4panel-2.0)
 BuildRequires:	pkgconfig(libxfce4ui-2)
+BuildRequires:	xfce4-dev-tools
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(libnotify)
