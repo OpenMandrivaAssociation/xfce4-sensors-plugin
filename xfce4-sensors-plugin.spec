@@ -15,6 +15,7 @@ BuildRequires:	pkgconfig(libxfce4ui-2)
 BuildRequires:	lm_sensors-devel > 3
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(libnotify)
+BuildRequires:	pkgconfig(gtk+-3.0
 BuildRequires:	netcat-traditional
 BuildRequires:	hddtemp
 Requires:	xfce4-panel >= 4.9.0
