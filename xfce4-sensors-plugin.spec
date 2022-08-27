@@ -33,6 +33,8 @@ values and displays them in your panel.
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
 %define _disable_ld_no_undefined 1
 
 %configure \
