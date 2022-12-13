@@ -3,7 +3,7 @@
 
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	1.4.3
+Version:	1.4.4
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
