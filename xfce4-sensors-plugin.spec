@@ -7,7 +7,7 @@ Version:	1.4.4
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
-URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
+URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ver}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.rpmlintrc
 BuildRequires:	pkgconfig(libxfce4panel-2.0)
