@@ -3,12 +3,12 @@
 
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	1.4.4
+Version:	1.4.5
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
-Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ver}/%{name}-%{version}.tar.bz2
+Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ver}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.rpmlintrc
 BuildRequires:	pkgconfig(libxfce4panel-2.0)
 BuildRequires:	pkgconfig(libxfce4ui-2)
@@ -30,11 +30,11 @@ A Xfce panel plugin which reads your hardware sensor
 values and displays them in your panel.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %define _disable_ld_no_undefined 1
 
 %configure \
