@@ -10,6 +10,11 @@ Group:		Graphical desktop/Xfce
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ver}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.rpmlintrc
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libxfce4panel-2.0)
 BuildRequires:	pkgconfig(libxfce4ui-2)
 BuildRequires:	xfce4-dev-tools
