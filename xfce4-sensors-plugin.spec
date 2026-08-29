@@ -3,27 +3,24 @@
 
 Summary:	Sensor plugin for the Xfce panel
 Name:		xfce4-sensors-plugin
-Version:	1.4.5
+Version:	1.5.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/%{url_ver}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.rpmlintrc
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
+BuildRequires:	meson
 BuildRequires:	make
 BuildRequires:	pkgconfig(libxfce4panel-2.0)
 BuildRequires:	pkgconfig(libxfce4ui-2)
 BuildRequires:	xfce4-dev-tools
 BuildRequires:	lm_sensors-devel > 3
-BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	netcat-traditional
 BuildRequires:	hddtemp
+BuildRequires:	%{_lib}XNVCtrl-devel
 Requires:	xfce4-panel >= 4.9.0
 Requires:	lm_sensors > 3
 Requires:	netcat-traditional
@@ -42,27 +39,28 @@ values and displays them in your panel.
 #export CXX=g++
 %define _disable_ld_no_undefined 1
 
-%configure \
-	--disable-static \
-	--enable-hddtemp=yes \
-	--enable-libsensors=yes \
-	--enable-procacpi \
-	--enable-sysfsacpi \
-	--enable-netcat=yes \
-	--disable-pathchecks \
-	--enable-notification
+%meson \
+    -Dhddtemp=enabled \
+    -Dhddtemp-path=%{_bindir}/hddtemp \
+    -Dsysfsacpi=enabled \
+    -Dxnvctrl=disabled \
+    -Dlibnotify=enabled \
+    -Dlibsensors=enabled \
+    -Dnetcat=enabled \
+    -Dprocacpi=enabled \
+    -Dxnvctrl=enabled
+%meson_build
 
-%make_build
 
 %install
-%make_install manualdir=%{_mandir}/man1
+%meson_install
 
 rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 
 %find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS README TODO
 %{_bindir}/xfce4-sensors
 %{_libdir}/xfce4/modules/*
 %{_libdir}/xfce4/panel/plugins/libxfce4-sensors-plugin.so
