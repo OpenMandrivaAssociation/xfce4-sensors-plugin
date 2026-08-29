@@ -62,7 +62,6 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig/libxfce4sensors-1.0.pc
 %files -f %{name}.lang
 %doc AUTHORS README TODO
 %{_bindir}/xfce4-sensors
-%{_libdir}/xfce4/modules/*
 %{_libdir}/xfce4/panel/plugins/libxfce4-sensors-plugin.so
 %{_datadir}/xfce4/panel/plugins/*
 %{_iconsdir}/hicolor/*/apps/*.*g
